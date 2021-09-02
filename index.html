@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Amazon Clone</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0ec3231762.js" crossorigin="anonymous"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
+        integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/"
+        crossorigin="anonymous">
+    </script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+    <script src="firebase.js"></script>
+    <script src="script.js"></script>
+    
+    
+</head>
+<body>
+    <div class="bg-white w-full">
+        <div class="header flex items-center h-16 bg-gray-900">
+            <!-- Left Icons-->
+            <div class="logo w-1/5 h-16 ml-10">
+                <a href="https://www.amazon.com"><img class="w-28 h-16 object-contain cursor-pointer"src="/Images/amazonLogo.png"></a>
+            </div>
+            <input class="h-9 w-30 bg-gray-800 px-3 ml-6 text-white placeholder-white border border-gray-500 border-opacity-75 rounded-l-xl focus:outline-none"id="search" type="text" placeholder="Search...">
+            <div class="categories h-9 w-30 px-3 flex items-center bg-gray-800 text-white border border-gray-500 border-opacity-75">
+                Categories
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="search-icon rounded-r-xl px-3 h-9 w-10 bg-yellow-500 text-white flex items-center cursor-pointer hover:bg-yellow-600">
+                <i class="fas fa-search"></i>
+            </div>
+            <!-- Right Icons -->
+            <div class="icons text-white ml-auto mr-8 p-1">
+                <i class="far fa-heart"></i>
+            </div>
+            <!--Cart Icon-->
+            <a href="cart.html">
+                <div class="cart text-white bg-yellow-500 h-9 w-10 rounded flex items-center content-center px-2.5 mr-8 cursor-pointer relative hover:bg-yellow-600">
+                    <div class="cart-item-number absolute -top-1.5 -right-1.5 bg-white h-4 w-4 rounded-full text-black text-xs font-bold flex justify-center items-center">
+                    1
+                    </div>
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+            </a>
+            <div class="bell text-white mr-8 p-1">
+                <i class="far fa-bell"></i>
+                
+            </div>
+            <div class="profile mr-8 bg-white rounded">
+                <svg height="40" data-jdenticon-value="paige"></svg>
+            </div>
+        </div>
+        <div class="main">
+            
+        </div>
+    </div>
+    
+    <div class="main h-screen flex">
+        <!-- Sidebar With Categories-->
+        <div class="main-sidebar w-1/5 bg-gray-900 border-t-2 border-gray-700">
+            <div class="sidebar-categories p-6">
+                <div class="sidebar-main-category text-yellow-500 cursor-pointer flex font-bold bg-gray-700 rounded p-2 w-28">
+                    <span class=""><i class="bi bi-grid"></i></span>
+                    <span class="ml-2">Categories</span>
+                </div>
+                <div class="sidebar-main-category mt-4 text-white ml-8 cursor-pointer">
+                    <span class="w-8"></span>
+                    <span>Echo and Alexa</span>
+                </div>
+                <div class="sidebar-main-category mt-4 text-white ml-8 cursor-pointer">
+                    <span class="w-8"></span>
+                    <span>Kindle</span>
+                </div>
+                <div class="sidebar-main-category mt-4 text-white ml-8 cursor-pointer">
+                    <span class="w-8"></span>
+                    <span>Books</span>
+                </div>
+                <div class="sidebar-main-category mt-4 text-white ml-8 cursor-pointer">
+                    <span class="w-8"></span>
+                    <span>Electronics</span>
+                </div>
+                <div class="sidebar-main-category mt-4 text-white ml-8 cursor-pointer">
+                    <span class="w-8"></span>
+                    <span>Home and Garden</span>
+                </div>
+                <div class="sidebar-main-category mt-4 text-white ml-8 cursor-pointer">
+                    <span class="w-8"></span>
+                    <span>Fashion</span>
+                </div>
+                <div class="sell-items text-white mt-9 flex items-center cursor-pointer">
+                    <i class="fas fa-percent"></i>
+                    <span class="ml-2 font-bold">Sell on Amazon</span>
+                </div>
+                <div class="help text-white mt-9 flex items-center cursor-pointer">
+                    <i class="far fa-question-circle"></i>
+                    <span class="ml-2 font-bold">Help</span>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="main-content flex-1 p-6">
+            <!-- Main Banner -->
+            <div class="main-content-banner h-44 rounded-lg flex items-end">
+                <div class="button text-yellow-500 bg-white w-36 h-10 rounded-full flex items-center justify-center m-4 cursor-pointer">
+                    Browse Products
+                </div>
+            </div>
+            
+            <div class="popular-categories font-bold mt-5">
+                <span>Popular Categories</span>
+                <span class="text-yellow-500"><i class="fas fa-star"></i></span>
+                <div class="popular-categories-icons flex items-center mt-5">
+                   <div class="computer bg-gray-300 h-30 w-30 ml-3 hover:bg-gray-400 cursor-pointer"> <span class="m-4"><i class="bi bi-display fa-4x"></i> </span></div>
+                    <div class="gift bg-gray-300 h-30 w-30 ml-3 hover:bg-gray-400 cursor-pointer"><span class="m-4"><i class="bi bi-gift fa-4x"></i></span></div>
+                    <div class="phone bg-gray-300 h-30 w-30 ml-3 hover:bg-gray-400 cursor-pointer"><span class="m-4"> <i class="bi bi-phone fa-4x"></i></span></div>
+                    <div class="book bg-gray-300 h-30 w-30 ml-3 hover:bg-gray-400 cursor-pointer"><span class="m-4"><i class="bi bi-book fa-4x"></i></span></div>
+                    <div class="camera bg-gray-300 h-30 w-30 ml-3 hover:bg-gray-400 cursor-pointer"><span class="m-4"><i class="bi bi-camera fa-4x"></i></span></div>
+                    <div class="house bg-gray-300 h-30 w-30 ml-3 hover:bg-gray-400 cursor-pointer"><span class="m-4"><i class="bi bi-house-door fa-4x"></i></span></div>
+                    <div class="music bg-gray-300 h-30 w-30 ml-3 hover:bg-gray-400 cursor-pointer"><span class="m-4"><i class="bi bi-music-note-beamed fa-4x"></i></span></div>
+                    <div class="light bg-gray-300 h-30 w-30 ml-3 hover:bg-gray-400 cursor-pointer"><span class="m-4"><i class="bi bi-lightbulb fa-4x"></i></span></div>
+                </div>
+            </div>
+            <div class="hot-deals flex mt-5">
+                <span class="font-bold">Hot Deals</span>
+                <img src="Images/fire.png" class="h-6 w-6">
+
+            </div>
+            <div class="main-products w-full h-auto mt-5 flex">
+                <div class="main-product">
+                    <div class="product-image">
+                        <img src="/Images/deal1.png" alt="">
+                    </div>
+                    <div class="product-name">
+                        <span>Klipsch Reference Theater Pack 5.1 Channel Surround Sound System</span>
+                    </div>
+                    <div class="product-make">
+                        <span><a src="#">Visit the Klipsch Store</a></span>
+                    </div>
+                    <div class="product-rating text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="product-price text-base">
+                        <span>Price:</span>
+                        <span class="price text-pink-400 font-bold">$ 340.00</span>
+                    </div>
+                    <div class="add-to-cart h-8 w-28 bg-yellow-500 ml-8 mb-0 flex justify-center items-center text-white rounded text-md cursor-pointer hover:bg-yellow-600">
+                        Add to cart
+                    </div>
+                </div>
+                <div class="main-product ml-6">
+                    <div class="product-image">
+                        <img src="/Images/deal2.png" alt="">
+                    </div>
+                    <div class="product-name">
+                        <span>Samsung 10 SE, US Version Cell Phone with 16 MP Rear AI Triple-Camera</span>
+                    </div>
+                    <div class="product-make">
+                        <span><a src="#">Android</a></span>
+                    </div>
+                    <div class="product-rating text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="product-price text-base">
+                        <span>Price:</span>
+                        <span class="price text-pink-400 font-bold">$ 149.99</span>
+                    </div>
+                </div>
+                <div class="main-product ml-6">
+                    <div class="product-image">
+                        <img src="/Images/deal3.png" alt="">
+                    </div>
+                    <div class="product-name">
+                        <span>Kodak PIXPRO Astro Zoom AZ652-BK 20MP Digital Camera (Black)</span>
+                    </div>
+                    <div class="product-make">
+                        <span><a src="#">Kodak</a></span>
+                    </div>
+                    <div class="product-rating text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="product-price text-base">
+                        <span>Price:</span>
+                        <span class="price text-pink-400 font-bold">$ 349.99</span>
+                    </div>
+                </div>
+                <div class="main-product ml-6">
+                    <div class="product-image">
+                        <img src="/Images/deal4.png" alt="">
+                    </div>
+                    <div class="product-name">
+                        <span>SENNHEISER HD 660 S - HiRes Audiophile Open Back Headphone</span>
+                    </div>
+                    <div class="product-make">
+                        <span><a src="#">Sennheiser</a></span>
+                    </div>
+                    <div class="product-rating text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        
+                    </div>
+                    <div class="product-price text-base">
+                        <span>Price:</span>
+                        <span class="price text-pink-400 font-bold">$ 439.99</span>
+                    </div>
+                </div>
+                <div class="main-product ml-6">
+                    <div class="product-image">
+                        <img src="/Images/deal5.png" alt="">
+                    </div>
+                    <div class="product-name">
+                        <span>Lenovo Smart Tab M10 10.1” Android Tablet</span>
+                    </div>
+                    <div class="product-make">
+                        <span><a src="#">Lenovo</a></span>
+                    </div>
+                    <div class="product-rating text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        
+                    </div>
+                    <div class="product-price text-base">
+                        <span>Price:</span>
+                        <span class="price text-pink-400 font-bold">$ 199.00</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+* {
+    margin:0;
+    padding:0;
+    
+}
+body{
+    background-color: #f2f2f2;
+}
+.main-content-banner{
+    background-image:url("https://i.ibb.co/JnmTD12/banner.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.button:hover{
+    color:white;
+    background:#ff9f00;
+    border:3px solid white;
+}
+.main-product{
+    height:auto;
+    width:202px;
+    font-size: small;
+    font-weight: 600;
+    border: 1px solid #D3D3D3;
+}
+
+.product-image{
+    width:200px;
+    height:150px;
+    background-color: white;
+}
+.product-image img{
+    height:100%;
+    width:100%;
+    object-fit:scale-down ;
+}
+.icons:hover{
+    border:1px solid white;
+    
+
+}
+.bell:hover{
+    border:1px solid white;
+    
+}
